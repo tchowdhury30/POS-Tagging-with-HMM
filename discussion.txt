@@ -1,0 +1,202 @@
+test0:
+Transition Probabilities: {#={V=0.4, N=0.6}, V={Adj=0.2, N=0.8}, N={V=0.3, Adj=0.7}}
+Observation Probabilities: {V={loud=0.2, bark=0.6}, Adj={loud=0.7, dog=0.1}, N={bark=0.1, dog=0.5}}
+Initial States: {#=null}
+Initial Scores: {#=0.0}
+
+Processing word: bark
+Current States: {#=null}
+Current Scores: {#=0.0}
+Current State: #
+Checking transition from # to V
+Transition probability: 0.4
+Observation probability for bark in V: 0.6
+Calculated score for transition to V: 1.0
+Comparing score for state V: current score = -Infinity, new score = 1.0
+Back Pointer updated for V: #
+Checking transition from # to N
+Transition probability: 0.6
+Observation probability for bark in N: 0.1
+Calculated score for transition to N: 0.7
+Comparing score for state N: current score = -Infinity, new score = 0.7
+Back Pointer updated for N: #
+Updated Current Scores: {V=1.0, N=0.7}
+Updated Next Scores: {V=1.0, N=0.7}
+Back Pointers: [{V=#, N=#}]
+
+Processing word: loud
+Current States: {V=null, N=null}
+Current Scores: {V=1.0, N=0.7}
+Current State: V
+Checking transition from V to Adj
+Transition probability: 0.2
+Observation probability for loud in Adj: 0.7
+Calculated score for transition to Adj: 1.9
+Comparing score for state Adj: current score = -Infinity, new score = 1.9
+Back Pointer updated for Adj: V
+Checking transition from V to N
+Transition probability: 0.8
+Observation probability for loud in N: -1000.0
+Calculated score for transition to N: -998.2
+Comparing score for state N: current score = -Infinity, new score = -998.2
+Back Pointer updated for N: V
+Current State: N
+Checking transition from N to V
+Transition probability: 0.3
+Observation probability for loud in V: 0.2
+Calculated score for transition to V: 1.2
+Comparing score for state V: current score = -Infinity, new score = 1.2
+Back Pointer updated for V: N
+Checking transition from N to Adj
+Transition probability: 0.7
+Observation probability for loud in Adj: 0.7
+Calculated score for transition to Adj: 2.0999999999999996
+Comparing score for state Adj: current score = 1.9, new score = 2.0999999999999996
+Back Pointer updated for Adj: N
+Updated Current Scores: {Adj=2.0999999999999996, V=1.2, N=-998.2}
+Updated Next Scores: {Adj=2.0999999999999996, V=1.2, N=-998.2}
+Back Pointers: [{V=#, N=#}, {Adj=N, V=N, N=V}]
+Final Path: N, Adj
+Result: N Adj
+
+test1:
+Initial States: {#=null}
+Initial Scores: {#=0.0}
+
+Processing word: dog
+Current States: {#=null}
+Current Scores: {#=0.0}
+Current State: #
+Checking transition from # to V
+Transition probability: 0.4
+Observation probability for dog in V: -1000.0
+Calculated score for transition to V: -999.6
+Comparing score for state V: current score = -Infinity, new score = -999.6
+Back Pointer updated for V: #
+Checking transition from # to N
+Transition probability: 0.6
+Observation probability for dog in N: 0.5
+Calculated score for transition to N: 1.1
+Comparing score for state N: current score = -Infinity, new score = 1.1
+Back Pointer updated for N: #
+Updated Current Scores: {V=-999.6, N=1.1}
+Updated Next Scores: {V=-999.6, N=1.1}
+Back Pointers: [{V=#, N=#}]
+
+Processing word: bark
+Current States: {V=null, N=null}
+Current Scores: {V=-999.6, N=1.1}
+Current State: V
+Checking transition from V to Adj
+Transition probability: 0.2
+Observation probability for bark in Adj: -1000.0
+Calculated score for transition to Adj: -1999.4
+Comparing score for state Adj: current score = -Infinity, new score = -1999.4
+Back Pointer updated for Adj: V
+Checking transition from V to N
+Transition probability: 0.8
+Observation probability for bark in N: 0.1
+Calculated score for transition to N: -998.7
+Comparing score for state N: current score = -Infinity, new score = -998.7
+Back Pointer updated for N: V
+Current State: N
+Checking transition from N to V
+Transition probability: 0.3
+Observation probability for bark in V: 0.6
+Calculated score for transition to V: 2.0
+Comparing score for state V: current score = -Infinity, new score = 2.0
+Back Pointer updated for V: N
+Checking transition from N to Adj
+Transition probability: 0.7
+Observation probability for bark in Adj: -1000.0
+Calculated score for transition to Adj: -998.2
+Comparing score for state Adj: current score = -1999.4, new score = -998.2
+Back Pointer updated for Adj: N
+Updated Current Scores: {Adj=-998.2, V=2.0, N=-998.7}
+Updated Next Scores: {Adj=-998.2, V=2.0, N=-998.7}
+Back Pointers: [{V=#, N=#}, {Adj=N, V=N, N=V}]
+Final Path: N, V
+Test 1 Result: N V
+
+Test Case 1: "bark", "loud"
+Transition Probabilities:
+    From start: N (0.6), V (0.4)
+    From N: V (0.3), Adj (0.7)
+    From V: N (0.8), Adj (0.2)
+Observation Probabilities:
+    For N: "dog" (0.5), "bark" (0.1)
+    For V: "bark" (0.6), "loud" (0.2)
+    For Adj: "loud" (0.7), "dog" (0.1)
+Result: The algorithm correctly identified "bark" as a verb (V) and "loud" as an adjective (Adj), resulting in the sequence "V Adj".
+
+Test Case 2: "dog", "bark"
+    Transition Probabilities: Same as Test Case 1.
+    Observation Probabilities: Same as Test Case 1.
+Result: The algorithm correctly identified "dog" as a noun (N) and "bark" as a verb (V), resulting in the sequence "N V".
+
+The tests were designed to evaluate the system's ability to correctly identify the POS tags of words in different contexts.
+In both test cases, the system successfully identified the correct POS tags based on the given probabilities.
+
+In Test Case 1, the system correctly identified "bark" as a verb and "loud" as an adjective.
+This is consistent with the observation probabilities, where "bark" has a higher probability of being a verb and "loud"
+of being an adjective.
+
+In Test Case 2, the system correctly identified "dog" as a noun and "bark" as a verb. This aligns with the observation
+probabilities, where "dog" has a higher probability of being a noun.
+
+Testing on texts.zip:
+
+For simple sentences and tags:
+Accuracy: 0.8648648648648649
+Right: 32 Wrong: 5
+
+For brown sentences and tags:
+Accuracy: 0.9646919821948673
+Right: 35109 Wrong: 1285
+
+Testing on my own test sentences:
+
+Enter a sentence to tag (type 'exit' to quit):
+Can you help me with my homework?
+Tags: PRO V DET N V PRO V
+Correct Tags: MOD PRO V PRO P DET N
+
+Enter another sentence to tag (type 'exit' to quit):
+They are planning a trip to Paris next summer.
+Tags: PRO V P DET N V P DET N
+Correct Tags: PRO V VG DET N P NP ADV N
+
+Enter another sentence to tag (type 'exit' to quit):
+The children played soccer at the park on Sunday
+Tags: DET N V PRO V DET N V DET
+Correct Tags: DET N VD N P DET N P NP
+
+Enter another sentence to tag (type 'exit' to quit):
+I will meet you at the library after school.
+Tags: PRO N V PRO V DET N V DET
+Correct Tags: PRO MOD V PRO P DET N P N
+
+Enter another sentence to tag (type 'exit' to quit):
+The professor, who wrote a book on linguistics, is giving a lecture.
+Tags: DET N V P DET N V PRO V P DET N
+Correct Tags: DET N WH VD DET N P N V VG DET N
+
+Enter another sentence to tag (type 'exit' to quit):
+Despite the rain, the parade continued with enthusiasm.
+Tags: PRO V P DET N V DET N
+Correct Tags: P DET N V P ADV
+
+Enter another sentence to tag (type 'exit' to quit):
+The museum's new exhibit opens next week.
+Tags: DET N V P DET N .
+Correct Tags: DET N POS ADJ N V ADV N
+
+
+
+There are various examples of correctly tagged and incorrectly tagged words in
+my test sentences above. The system's performance is very dependent on the unseen-word
+parameter, which significantly impacts the scoring of state transitions
+in the HMM. A high penalty for unseen words can lead to incorrect tagging,
+especially for sentences with vocabulary not present in the training data.
+The system does not seem to handle punctuation or complex
+structures like phrasal verbs and possessives accurately.
